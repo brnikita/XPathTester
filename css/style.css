@@ -66,15 +66,17 @@ body{
 #xmlResult li > ul{
     padding-left: 40px;
 }
-#xmlResult span, #xmlResult em{
+#xmlResult span, #xmlResult em, #xmlResult b, #xmlResult del{
    display: inline-block;
 }
 #xmlResult .nodeName{
     color: #18aa1f;
+    font-weight: normal;
     cursor: pointer;
 }
 #xmlResult .textNode{
     color: #8ffb94;
+    text-decoration: none;
 }
 #xmlResult .pickTag{
    background: #344972;
@@ -92,7 +94,7 @@ body{
     padding-left:10px;
     font-style: italic;
 }
-.nodeHighlight span, .nodeHighlight em{
+.nodeHighlight span, .nodeHighlight em,.nodeHighlight b, .nodeHighlight del,  span.nodeHighlight,  em.nodeHighlight{
     background: #064645;
 }
 .xPathApply .tagElement{
@@ -100,7 +102,7 @@ body{
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
     opacity: 0.4;
 }
-.xPathApply .nodeHighlight .tagElement{
+.xPathApply .nodeHighlight .tagElement, .xPathApply .nodeHighlight.tagElement{
     filter: alpha(opacity=100);
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;

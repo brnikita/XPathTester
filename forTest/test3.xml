@@ -8,7 +8,7 @@
         <calories>650</calories>
     </food>
     <food count="2">
-        <name>Strawberry Belgian Waffles</name>
+        <name>Strawberry Belgian Waffles</name><!--Hello world-->
         <price  title="hello" name="world2" count="3">$7.95</price>
         <description  name="world2" count="3">light Belgian waffles covered with strawberries and whipped cream</description>
         <calories  title="hello" name="world" count="3">900</calories>

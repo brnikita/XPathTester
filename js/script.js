@@ -56,6 +56,7 @@
         },
         X = {
             xmlDoc: {},
+            highlightNodes: [],
             sTag :{},
             eTag: {},
             init: function(){
@@ -64,6 +65,34 @@
                 X.$xFormXPathT = document.getElementById('xFormXPathT');
                 X.$xmlResultWrap = document.getElementById('xmlResultWrap');
                 X.$xmlResult = document.getElementById('xmlResult');
+                B.eListener('click', X.$xmlResult, function(e){
+                    var target = e && e.target || event.srcElement,
+                        parent, children, nodeGag;
+                    if(target.getAttribute('data-toggle')){
+                        parent = target.parentNode;
+                        children = parent.getElementsByTagName('ul')[0];
+                        nodeGag = parent.getElementsByTagName('del')[0];
+                        if(B.removeClass(children, 'hide')){
+                            B.addClass(nodeGag, 'hide');
+                            B.addClass(target, 'nToggleOpen');
+                            B.removeClass(target, 'nToggleClose');
+                            return;
+                        }
+                        B.addClass(children, 'hide');
+                        B.removeClass(nodeGag, 'hide');
+                        B.addClass(target, 'nToggleClose');
+                        B.removeClass(target, 'nToggleOpen');
+                    }
+                    if(target.getAttribute('data-s-tag')){
+                        var bTags = target.parentNode.getElementsByTagName('b'),
+                            eTag = bTags[bTags.length - 1];
+                        X.pickTags(target, eTag);
+                    }
+                    if(target.getAttribute('data-e-tag')){
+                        var sTag = target.parentNode.getElementsByTagName('b')[0];
+                        X.pickTags(sTag, target);
+                    }
+                });
                 B.eListener('keyup', X.$xFormXPathT, X.applyXPath);
                 B.eListener('click', X.$xLoadXML, function(){
                     X.inputShowError(X.$uploadFile, false);
@@ -116,23 +145,15 @@
                 var nodeElement;
                 switch(node.nodeType){
                     case 1:{
-                        var sTag = B.createEl('em', {'class': 'nodeName tagElement'}, node.nodeName),
-                            eTag = B.createEl('em', {'class': 'nodeName tagElement'}, node.nodeName),
-                            closeTag = B.createEl('span', {'class': 'tagElement'}, '\<\/');
-                        B.eListener('click', sTag, function(){
-                            X.pickTags(sTag, eTag);
-                        });
-                        B.eListener('click', eTag, function(){
-                            X.pickTags(sTag, eTag);
-                        });
                         nodeElement = document.createElement('li');
                         nodeElement.appendChild(B.createEl('span', {'class': 'tagElement'}, '\<'));
-                        nodeElement.appendChild(sTag);
+                        nodeElement.appendChild(B.createEl('b', {'class': 'nodeName tagElement', 'data-s-tag': 's-tag'}, node.nodeName));
                         X.addAttributes(node, nodeElement);
                         nodeElement.appendChild(B.createEl('span', {'class': 'tagElement'}, '\>'));
-                        X.addChildren(node, nodeElement, closeTag);
-                        nodeElement.appendChild(closeTag);
-                        nodeElement.appendChild(eTag);
+                        nodeElement.appendChild(B.createEl('del', {'class': 'textNode hide'}, '....'));
+                        X.addChildren(node, nodeElement);
+                        nodeElement.appendChild(B.createEl('span', {'class': 'tagElement'}, '\<\/'));
+                        nodeElement.appendChild(B.createEl('b', {'class': 'nodeName tagElement', 'data-e-tag': 'e-tag'}, node.nodeName));
                         nodeElement.appendChild(B.createEl('span', {'class': 'tagElement'}, '\>'));
                         break;
                     }
@@ -150,9 +171,13 @@
                         }
                     }
                 }
+                if(node == X.highlightNodes[0]){
+                    X.highlightNodes.shift();
+                    B.addClass(nodeElement, 'nodeHighlight');
+                }
                 return nodeElement;
             },
-            addChildren: function(node, nodeElement, closeTag){
+            addChildren: function(node, nodeElement){
                 var children = node.childNodes;
                 if(children.length){
                     var listCont = B.createEl('ul'),
@@ -166,21 +191,8 @@
                         listCont.appendChild(X.buildXmlDOM(children[i]));
                     }
                     if(childCount){
-                        var nodeToggle = B.createEl('strong', {'class': 'nodeToggle nToggleOpen'}),
-                            nodeGag = B.createEl('span', {'class': 'textNode'}, '....');
+                        var nodeToggle = B.createEl('strong', {'class': 'nodeToggle nToggleOpen', 'data-toggle': 'toggle'});
                         nodeElement.appendChild(nodeToggle);
-                        B.eListener('click', nodeToggle, function(){
-                            if(B.removeClass(listCont, 'hide')){
-                                nodeElement.removeChild(nodeGag);
-                                B.addClass(nodeToggle, 'nToggleOpen');
-                                B.removeClass(nodeToggle, 'nToggleClose');
-                                return;
-                            }
-                            B.addClass(listCont, 'hide');
-                            nodeElement.insertBefore(nodeGag, closeTag);
-                            B.addClass(nodeToggle, 'nToggleClose');
-                            B.removeClass(nodeToggle, 'nToggleOpen');
-                        });
                         nodeElement.appendChild(listCont);
                     }
                 }
@@ -191,10 +203,6 @@
                     var attributes = document.createDocumentFragment(),
                         attrInst;
                     for(var i = 0; i < attrs.length; i++){
-                        if(attrs[i].nodeName == 'highlight'){
-                            B.addClass(nodeElement, 'nodeHighlight');
-                            continue;
-                        }
                         attrInst = B.createEl('span', {'class': 'nodeAttr'});
                         attrInst.appendChild(B.createEl('em', {'class': 'attrName tagElement'}, attrs[i].nodeName));
                         attrInst.appendChild(B.createEl('em', {'class': 'tagElement'}, '="'));
@@ -238,7 +246,7 @@
                         B.addClass(X.$xmlResult, 'xPathApply');
                         B.addClass(X.$xFormXPathT, 'xPathGood');
                         for(var i = 0; i < xPathRes.snapshotLength; i++){
-                            xPathRes.snapshotItem(i).setAttribute('highlight', 'true');
+                            X.highlightNodes[i] = xPathRes.snapshotItem(i);
                         }
                     }else{
                         X.xmlDoc.setProperty("SelectionLanguage", "XPath");
@@ -252,7 +260,7 @@
                         B.addClass(X.$xmlResult, 'xPathApply');
                         B.addClass(X.$xFormXPathT, 'xPathGood');
                         for(var i = 0; i < xPathRes.length; i++){
-                            xPathRes[i].setAttribute('highlight', 'true');
+                            X.highlightNodes[i] = xPathRes[i];
                         }
                     }
                 }catch(e){
