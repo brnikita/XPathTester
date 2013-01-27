@@ -15,10 +15,12 @@ NOTE: This task is intended to demonstrate JavaScript and DOM programming skills
 The web page should have an input field where XML file path to load will be specified. This XML file should be loaded and XML text should be rendered on the page with the text highlighting - different colors should be used to highlight element names, attribute names, and attribute values; Text and CDATA nodes content may be left without highlighting.
 XML text should be reformatted to fit the page in the best way, each new element should start on new line.
 Features which good to have:
+<ul>
 <li>
 Rendered XML may support XML elements folding.
 </li><li>	Rendered XML may react on mouse pointer and highlight the start tag and the end tag of the XML node which is located under the pointer.
 </li>
+</ul>
 <p>
 <p>
 Page should have another input field where XPath expression will be entered. XPath expression should be reevaluated each time it is updated against the loaded XML, and background color of the XPath expression input field should be changed according the following rules:
