@@ -1,7 +1,7 @@
 XPathTester
 ===========
 <p>
-    <h3>Links for tests:</h3>
+    <strong>Links for tests:</strong>
     <ul>
         <li>http://tester.soshace.com/forTest/test.xml</li>
     </ul>
