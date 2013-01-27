@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG>
+    <CD atr="sdsdlfkj" title="sadfasdf">
+        <TITLE class="123123">Empire Burlesque</TITLE>
+        <ARTIST text="2341234123">Bob Dylan</ARTIST>
+        <COUNTRY style="23423423">USA</COUNTRY>
+        <COMPANY>Columbia</COMPANY>
+        <PRICE>10.90</PRICE>
+        <YEAR>1985
+            <akjshd sty="sdfsdfsdf">
+                lsdkjfsldfj
+            </akjshd>
+        </YEAR>
+    </CD>
+    <CD>
+        <TITLE>Hide your heart</TITLE>
+        <ARTIST atr="sdsdlfkj" title="sadfasdf">Bonnie Tyler</ARTIST>
+        <COUNTRY>UK</COUNTRY>
+        <COMPANY>CBS Records</COMPANY>
+        <PRICE>9.90</PRICE>
+        <YEAR>1988</YEAR>
+    </CD>
+    <CD>
+        <TITLE atr="sdsdlfkj" title="sadfasdf">Greatest Hits</TITLE>
+        <ARTIST>Dolly Parton</ARTIST>
+        <COUNTRY>USA</COUNTRY>
+        <COMPANY>RCA</COMPANY>
+        <PRICE>9.90</PRICE>
+        <YEAR>1982</YEAR>
+    </CD>
+    <CD>
+        <TITLE>Still got the blues</TITLE>
+        <ARTIST>Gary Moore</ARTIST>
+        <COUNTRY>UK</COUNTRY>
+        <COMPANY>Virgin records</COMPANY>
+        <PRICE>10.20</PRICE>
+        <YEAR>1990</YEAR>
+    </CD>
+</CATALOG>

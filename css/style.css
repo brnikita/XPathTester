@@ -1,0 +1,118 @@
+*{
+    padding:0;
+    margin:0;
+}
+ul{
+    list-style: none;
+}
+body{
+    font: 14px Arial;
+    color: #4e4e4e;
+}
+.hide{
+    display:none !important;
+}
+#pageContent{
+    width:900px;
+    margin: 0 auto;
+}
+#xForm label{
+    display: block;
+    padding-bottom:3px;
+}
+#xForm input{
+    padding:3px 5px;
+    display:block;
+    margin-bottom:3px;
+}
+#xForm input[type="text"]{
+    width:840px;
+}
+#xForm input.error{
+    background: #de7171;
+}
+#xFormArea{
+    margin-top:20px;
+    padding:10px 23px;
+    width:850px;
+}
+#xFormArea legend{
+    font-size:16px;
+    font-weight:bold;
+}
+#xFormXML{
+    padding-bottom: 10px;
+}
+#xLoadXML, #xPathApply{
+    display:block;
+    cursor: pointer;
+}
+#xmlResultWrap{
+    margin-top:20px;
+    overflow: scroll;
+    height:500px;
+}
+#xmlResult{
+    background: #131313;
+    border:#a11a1a 2px solid;
+    padding:20px;
+    min-height: 436px;
+    color:#106e14;
+    line-height: 19px;
+}
+#xmlResult li{
+    position: relative;
+}
+#xmlResult li > ul{
+    padding-left: 40px;
+}
+#xmlResult span, #xmlResult em{
+   display: inline-block;
+}
+#xmlResult .nodeName{
+    color: #18aa1f;
+    cursor: pointer;
+}
+#xmlResult .textNode{
+    color: #8ffb94;
+}
+#xmlResult .pickTag{
+   background: #344972;
+}
+#xmlResult .nodeHighlight .pickTag{
+   background: #325292;
+}
+#xmlResult .attrName{
+    color:#4669b0;
+}
+#xmlResult .attrValue{
+    color:#a5753d;
+}
+#xmlResult .nodeAttr{
+    padding-left:10px;
+    font-style: italic;
+}
+.nodeHighlight span, .nodeHighlight em{
+    background: #064645;
+}
+.noMatchedNodes{
+    background: #ebed5d;
+}
+#xmlResult .nodeToggle{
+    position: absolute;
+    top: 5px;
+    left: -13px;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+#xmlResult .nodeToggle.nToggleOpen{
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #9f6843;
+}
+#xmlResult .nodeToggle.nToggleClose{
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #9f6843;
+}

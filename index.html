@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>xPath tester</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+<div id="pageContent">
+    <form id="xForm">
+        <fieldset id="xFormArea">
+            <legend>xPath tester</legend>
+            <div id="xFormXML">
+                <label for="xFormUpFile">Path to XML file:</label>
+                <input type="text" placeholder="Paste path to xml file" id="xFormUpFile"/>
+                <input value="Load XML" type="button" id="xLoadXML"/>
+            </div>
+            <div id="xFormXPath">
+                <label for="xFormXPathT">xPath expression:</label>
+                <input id="xFormXPathT" type="text" placeholder="Write your xPath expression" disabled="disabled"/>
+            </div>
+        </fieldset>
+    </form>
+    <div id="xmlResultWrap" class="hide">
+        <div id="xmlResult">
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
