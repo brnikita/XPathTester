@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Edited by XMLSpy® -->
 <breakfast_menu>
-    <food>
-        <name>Belgian Waffles</name>
+    <food title="hello" name="world" count="3">
+        <name  title="hello" name="world" count="3">Belgian Waffles</name>
         <price>$5.95</price>
-        <description>two of our famous Belgian Waffles with plenty of real maple syrup</description>
+        <description  title="hello" name="world" count="3">two of our famous Belgian Waffles with plenty of real maple syrup</description>
         <calories>650</calories>
     </food>
-    <food>
+    <food count="2">
         <name>Strawberry Belgian Waffles</name>
-        <price>$7.95</price>
-        <description>light Belgian waffles covered with strawberries and whipped cream</description>
-        <calories>900</calories>
+        <price  title="hello" name="world2" count="3">$7.95</price>
+        <description  name="world2" count="3">light Belgian waffles covered with strawberries and whipped cream</description>
+        <calories  title="hello" name="world" count="3">900</calories>
     </food>
-    <food>
+    <food title="hello" count="1">
         <name>Berry-Berry Belgian Waffles</name>
         <price>$8.95</price>
-        <description>light Belgian waffles covered with an assortment of fresh berries and whipped cream</description>
-        <calories>900</calories>
+        <description  title="hello" name="world2">light Belgian waffles covered with an assortment of fresh berries and whipped cream</description>
+        <calories  title="hello" count="3">900</calories>
     </food>
-    <food>
-        <name>French Toast</name>
-        <price>$4.50</price>
-        <description>thick slices made from our homemade sourdough bread</description>
-        <calories>600</calories>
+    <food name="world" count="13">
+        <name  name="world" count="1">French Toast</name>
+        <price  title="hel" name="world12" count="5">$4.50</price>
+        <description  title="hello" name="world" count="6">thick slices made from our homemade sourdough bread</description>
+        <calories  title="hello" count="7">600</calories>
     </food>
-    <food>
+    <food title="hello" name="world12" count="7">
         <name>Homestyle Breakfast</name>
         <price>$6.95</price>
         <description>two eggs, bacon or sausage, toast, and our ever-popular hash browns</description>
