@@ -95,6 +95,16 @@ body{
 .nodeHighlight span, .nodeHighlight em{
     background: #064645;
 }
+.xPathApply .tagElement{
+    filter: alpha(opacity=40);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+    opacity: 0.4;
+}
+.xPathApply .nodeHighlight .tagElement{
+    filter: alpha(opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    opacity: 1;
+}
 .noMatchedNodes{
     background: #ebed5d;
 }

@@ -116,9 +116,9 @@
                 var nodeElement;
                 switch(node.nodeType){
                     case 1:{
-                        var sTag = B.createEl('em', {'class': 'nodeName'}, node.nodeName),
-                            eTag = B.createEl('em', {'class': 'nodeName'}, node.nodeName),
-                            closeTag = B.createEl('span', {}, '\<\/');
+                        var sTag = B.createEl('em', {'class': 'nodeName tagElement'}, node.nodeName),
+                            eTag = B.createEl('em', {'class': 'nodeName tagElement'}, node.nodeName),
+                            closeTag = B.createEl('span', {'class': 'tagElement'}, '\<\/');
                         B.eListener('click', sTag, function(){
                             X.pickTags(sTag, eTag);
                         });
@@ -126,21 +126,28 @@
                             X.pickTags(sTag, eTag);
                         });
                         nodeElement = document.createElement('li');
-                        nodeElement.appendChild(B.createEl('span', {}, '\<'));
+                        nodeElement.appendChild(B.createEl('span', {'class': 'tagElement'}, '\<'));
                         nodeElement.appendChild(sTag);
                         X.addAttributes(node, nodeElement);
-                        nodeElement.appendChild(B.createEl('span', {}, '\>'));
+                        nodeElement.appendChild(B.createEl('span', {'class': 'tagElement'}, '\>'));
                         X.addChildren(node, nodeElement, closeTag);
                         nodeElement.appendChild(closeTag);
                         nodeElement.appendChild(eTag);
-                        nodeElement.appendChild(B.createEl('span', {}, '\>'));
+                        nodeElement.appendChild(B.createEl('span', {'class': 'tagElement'}, '\>'));
                         break;
                     }
                     case 3: {
                         if(node.nodeValue){
-                            nodeElement = B.createEl('span', {'class': 'textNode'}, node.nodeValue);
+                            nodeElement = B.createEl('span', {'class': 'textNode tagElement'}, node.nodeValue);
+                            X.addAttributes(node, nodeElement);
                         }
                         break;
+                    }
+                    default:{
+                        if(node.nodeValue){
+                            nodeElement = B.createEl('span', {'class': 'tagElement'}, node.nodeValue);
+                            X.addAttributes(node, nodeElement);
+                        }
                     }
                 }
                 return nodeElement;
@@ -189,10 +196,10 @@
                             continue;
                         }
                         attrInst = B.createEl('span', {'class': 'nodeAttr'});
-                        attrInst.appendChild(B.createEl('em', {'class': 'attrName'}, attrs[i].nodeName));
-                        attrInst.appendChild(B.createEl('em', {}, '="'));
-                        attrInst.appendChild(B.createEl('em', {'class': 'attrValue'}, attrs[i].nodeValue));
-                        attrInst.appendChild(B.createEl('em', {}, '"'));
+                        attrInst.appendChild(B.createEl('em', {'class': 'attrName tagElement'}, attrs[i].nodeName));
+                        attrInst.appendChild(B.createEl('em', {'class': 'tagElement'}, '="'));
+                        attrInst.appendChild(B.createEl('em', {'class': 'attrValue tagElement'}, attrs[i].nodeValue));
+                        attrInst.appendChild(B.createEl('em', {'class': 'tagElement'}, '"'));
                         attributes.appendChild(attrInst);
                     }
                     nodeElement.appendChild(attributes);
@@ -209,6 +216,7 @@
                 var expr = X.$xFormXPathT.value,
                     xml,
                     xPathRes;
+                B.removeClass(X.$xmlResult, 'xPathApply');
                 B.removeClass(X.$xFormXPathT, 'noMatchedNodes');
                 B.removeClass(X.$xFormXPathT, 'error');
                 if(!expr){
@@ -226,6 +234,7 @@
                             B.addClass(X.$xFormXPathT, 'noMatchedNodes');
                             return;
                         }
+                        B.addClass(X.$xmlResult, 'xPathApply');
                         for(var i = 0; i < xPathRes.snapshotLength; i++){
                             xPathRes.snapshotItem(i).setAttribute('highlight', 'true');
                         }
@@ -238,6 +247,7 @@
                             B.addClass(X.$xFormXPathT, 'noMatchedNodes');
                             return;
                         }
+                        B.addClass(X.$xmlResult, 'xPathApply');
                         for(var i = 0; i < xPathRes.length; i++){
                             xPathRes[i].setAttribute('highlight', 'true');
                         }
