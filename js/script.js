@@ -72,7 +72,7 @@
                         X.inputShowError(X.$uploadFile, true);
                         return;
                     }
-                    X.loadXML(path, X.writeToDomXML);
+                    X.loadXML(path, X.applyXPath);
                 });
             },
             loadXML :function(xmlPath, callback)
@@ -218,6 +218,7 @@
                     xPathRes;
                 B.removeClass(X.$xmlResult, 'xPathApply');
                 B.removeClass(X.$xFormXPathT, 'noMatchedNodes');
+                B.removeClass(X.$xFormXPathT, 'xPathGood');
                 B.removeClass(X.$xFormXPathT, 'error');
                 if(!expr){
                     X.writeToDomXML();
@@ -235,6 +236,7 @@
                             return;
                         }
                         B.addClass(X.$xmlResult, 'xPathApply');
+                        B.addClass(X.$xFormXPathT, 'xPathGood');
                         for(var i = 0; i < xPathRes.snapshotLength; i++){
                             xPathRes.snapshotItem(i).setAttribute('highlight', 'true');
                         }
@@ -248,6 +250,7 @@
                             return;
                         }
                         B.addClass(X.$xmlResult, 'xPathApply');
+                        B.addClass(X.$xFormXPathT, 'xPathGood');
                         for(var i = 0; i < xPathRes.length; i++){
                             xPathRes[i].setAttribute('highlight', 'true');
                         }

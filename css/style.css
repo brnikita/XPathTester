@@ -108,6 +108,9 @@ body{
 .noMatchedNodes{
     background: #ebed5d;
 }
+.xPathGood{
+    background: #8ffb94;
+}
 #xmlResult .nodeToggle{
     position: absolute;
     top: 5px;
