@@ -59,6 +59,9 @@ body{
     min-height: 436px;
     color:#106e14;
     line-height: 19px;
+    float:left;
+    white-space: nowrap;
+    min-width: 838px;
 }
 #xmlResult li{
     position: relative;
