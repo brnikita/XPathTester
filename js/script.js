@@ -201,16 +201,19 @@
                 var attrs = node.attributes;
                 if(attrs){
                     var attributes = document.createDocumentFragment(),
-                        attrInst;
+                        attrInst, attrNode;
                     for(var i = 0; i < attrs.length; i++){
-                        attrInst = B.createEl('span', {'class': 'nodeAttr'});
-                        attrInst.appendChild(B.createEl('em', {'class': 'attrName tagElement'}, attrs[i].nodeName));
-                        attrInst.appendChild(B.createEl('em', {'class': 'tagElement'}, '="'));
-                        attrInst.appendChild(B.createEl('em', {'class': 'attrValue tagElement'}, attrs[i].nodeValue));
-                        attrInst.appendChild(B.createEl('em', {'class': 'tagElement'}, '"'));
+                        attrInst = document.createDocumentFragment();
+                        attrInst.appendChild(B.createEl('em', {'class': 'nodePadding'}, '.'));
+                        attrNode = B.createEl('span', {'class': 'nodeAttr'});
+                        attrNode.appendChild(B.createEl('em', {'class': 'attrName tagElement'}, attrs[i].nodeName));
+                        attrNode.appendChild(B.createEl('em', {'class': 'tagElement'}, '="'));
+                        attrNode.appendChild(B.createEl('em', {'class': 'attrValue tagElement'}, attrs[i].nodeValue));
+                        attrNode.appendChild(B.createEl('em', {'class': 'tagElement'}, '"'));
+                        attrInst.appendChild(attrNode);
                         if(attrs[i] == X.highlightNodes[0]){
                             X.highlightNodes.shift();
-                            B.addClass(attrInst, 'nodeHighlight');
+                            B.addClass(attrNode, 'nodeHighlight');
                         }
                         attributes.appendChild(attrInst);
                     }

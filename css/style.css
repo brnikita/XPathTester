@@ -94,8 +94,14 @@ body{
     color:#a5753d;
 }
 #xmlResult .nodeAttr{
-    padding-left:10px;
     font-style: italic;
+}
+#xmlResult .nodePadding{
+    width:10px;
+    color:#000;
+}
+.nodeHighlight .nodePadding{
+    color: #064645;
 }
 .nodeHighlight span, .nodeHighlight em,.nodeHighlight b, .nodeHighlight del,  span.nodeHighlight,  em.nodeHighlight{
     background: #064645;
