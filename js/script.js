@@ -208,6 +208,10 @@
                         attrInst.appendChild(B.createEl('em', {'class': 'tagElement'}, '="'));
                         attrInst.appendChild(B.createEl('em', {'class': 'attrValue tagElement'}, attrs[i].nodeValue));
                         attrInst.appendChild(B.createEl('em', {'class': 'tagElement'}, '"'));
+                        if(attrs[i] == X.highlightNodes[0]){
+                            X.highlightNodes.shift();
+                            B.addClass(attrInst, 'nodeHighlight');
+                        }
                         attributes.appendChild(attrInst);
                     }
                     nodeElement.appendChild(attributes);
